@@ -26,7 +26,7 @@ namespace BookingTickets {
         }
 
         private void listView1_Click(object sender, EventArgs e) {
-            MessageBox.Show("index: " + listView1.SelectedIndices[0].ToString() + "\n Title:" +
+            MessageBox.Show("index: " + listView1.SelectedIndices[0].ToString() + "\nTitle:" +
                 listView1.Items[listView1.SelectedIndices[0]].Text);
         }
 
@@ -47,12 +47,13 @@ namespace BookingTickets {
         }
 
         private void updateImageListOfMovies() {
-            imageList1.Images.Add("Zveropolis", Image.FromFile("Zveropolis.jpg"));
-            imageList1.Images.Add("Holo", Image.FromFile("Holo.jpg"));
-            imageList1.Images.Add("Batman", Image.FromFile("Batman.jpg"));
-            imageList1.Images.Add("Angry birds", Image.FromFile("Birds.jpg"));
-            imageList1.Images.Add("People X", Image.FromFile("X.jpg"));
-            imageList1.Images.Add("Warcraft", Image.FromFile("Warcraft.jpg"));
+
+            imageList1.Images.Add("Zveropolis", Properties.Resources.Zveropolis);
+            imageList1.Images.Add("Holo", Properties.Resources.Holo);
+            imageList1.Images.Add("Batman", Properties.Resources.Batman);
+            imageList1.Images.Add("Angry birds", Properties.Resources.Birds);
+            imageList1.Images.Add("People X", Properties.Resources.X);
+            imageList1.Images.Add("Warcraft", Properties.Resources.Warcraft);
             imageList1.ImageSize = new Size(150, 217);
 
             listView1.View = View.LargeIcon;
