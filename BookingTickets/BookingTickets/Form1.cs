@@ -14,11 +14,57 @@ namespace BookingTickets {
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        String[] theaterAddresses = {"ул. Шереметьевская, д. 20, ТЦ \"Капитолий Марьина Роща\", 3-й этаж",
+                                  "ул. Земляной вал, 33 (ТРК \"АТРИУМ\"",
+                                    "Алтуфьевское ш., д. 70, корп. 1, ТЦ \"Маркос-Молл»\"",
+                                    "пр-т Вернадского, д. 14"};
 
+        private void Form1_Load(object sender, EventArgs e) {
+            comboBox1.DataSource = new String[] {"Фильмы", "Кинотеатры"};
+            listBox1.DataSource = theaterAddresses;
+            updateImageListOfMovies();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void listView1_Click(object sender, EventArgs e) {
+            MessageBox.Show("index: " + listView1.SelectedIndices[0].ToString() + "\n Title:" +
+                listView1.Items[listView1.SelectedIndices[0]].Text);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) {
+//            MessageBox.Show("combo index: " + comboBox1.SelectedIndex);
+            if (comboBox1.SelectedIndex == 0) {
+                listView1.Visible = true;
+                listBox1.Visible = false;
+            } else {
+                listView1.Visible = false;
+                listBox1.Visible = true;
+            }
+        }
+
+        private void clearImageListOfMovies() {
+            imageList1.Images.Clear();
+            listView1.Clear();
+        }
+
+        private void updateImageListOfMovies() {
+            imageList1.Images.Add("Zveropolis", Image.FromFile("Zveropolis.jpg"));
+            imageList1.Images.Add("Holo", Image.FromFile("Holo.jpg"));
+            imageList1.Images.Add("Batman", Image.FromFile("Batman.jpg"));
+            imageList1.Images.Add("Angry birds", Image.FromFile("Birds.jpg"));
+            imageList1.Images.Add("People X", Image.FromFile("X.jpg"));
+            imageList1.Images.Add("Warcraft", Image.FromFile("Warcraft.jpg"));
+            imageList1.ImageSize = new Size(150, 217);
+
+            listView1.View = View.LargeIcon;
+            listView1.LargeImageList = this.imageList1;
+
+            int j = 0;
+            foreach (var el in imageList1.Images.Keys) {
+                listView1.Items.Add(new ListViewItem { ImageIndex = j++, Text = el });
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e) {
 
         }
     }
